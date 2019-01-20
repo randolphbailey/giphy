@@ -1,4 +1,4 @@
-var topics = ["Funny Cats", "Birds", "Funny Dogs"];
+var topics = ["Funny Cats", "Birds", "Funny Dogs", "Giraffes", "Explosions"];
 
 
 //Ajax Construction
