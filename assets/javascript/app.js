@@ -10,13 +10,14 @@ function fetchGifs () {
 //Populate GIFs in the bootstrap grid via AJAX
 function populateGifs (r) {
     let j = 0;
-    $(".container-fluid").empty();
+    $(".container").empty();
     for (let i=0; i<r.data.length; i++) {
         if (i%3 == 0) {
             j++;
-            $(".container-fluid").append("<div class='row' id='row"+j+"'></div>");
+            $(".container").append("<div class='row' id='row"+j+"'><div class='card-deck' id='deck" + j+ "'></div>");
         }
-        $("#row" + j).append("<div class='col-4'><img src='" + r.data[i].images.fixed_width.url + "'></div>");
+        let card = "<div class='card m-2'><img src='" + r.data[i].images.original.url + "' class='card-img-top imr' alt=''><div class='card-body'><h5 class='card-title'>" + r.data[i].title + "</h5><p class='card-text'>Rating: " + r.data[i].rating + "</p></div></div>";
+        $("#deck" + j).append(card);
     }
 }
 
