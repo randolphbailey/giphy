@@ -3,7 +3,7 @@ var topics = ["Funny Cats", "Birds", "Funny Dogs"];
 
 //Ajax Construction
 function fetchGifs () {
-    let gQuery = "http://api.giphy.com/v1/gifs/search?api_key=lvA12IjUg0sH1TWocJQxC1zmb2VEYq1y&q=" + event.target.innerText + "&limit=10";
+    let gQuery = "https://api.giphy.com/v1/gifs/search?api_key=lvA12IjUg0sH1TWocJQxC1zmb2VEYq1y&q=" + event.target.innerText + "&limit=10";
     $.ajax({url: gQuery, method: "GET"}).then(populateGifs);
 }
 
