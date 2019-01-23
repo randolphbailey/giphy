@@ -9,11 +9,11 @@ function fetchGifs () {
 //Populate GIFs in the bootstrap grid
 function populateGifs (r) {
     let j = 0;
-    $(".container").empty();
+    $("#main-content").empty();
     for (let i=0; i<r.data.length; i++) {
         if (i%3 == 0) {
             j++;
-            $(".container").append("<div class='row' id='row"+j+"'><div class='card-deck' id='deck" + j+ "'></div>");
+            $("#main-content").append("<div class='row' id='row"+j+"'><div class='card-deck' id='deck" + j+ "'></div>");
         }
         console.log(r.data[i].images.original_still.url);
         let card = "<div class='card m-2'><img src='" + r.data[i].images.original.url + "' id='" + r.data[i].id + "' class='card-img-top' alt-src='" + r.data[i].images.original_still.url + "'><div class='card-body'><h5 class='card-title'>" + r.data[i].title + "</h5><p class='card-text'>Rating: " + r.data[i].rating + "</p></div></div>";
@@ -23,9 +23,9 @@ function populateGifs (r) {
 
 //Initialize topics list in sidebar
 function initTopics () {
-    $("ul").empty().append("<li class='sidebar-brand'>Giphy Search</li><input type='text' id='newTopic'><br><button id='addTopicButton'>Add Topic</button>");
+    $("#populate").empty();
     for (let i=0; i<topics.length; i++) {
-        $("ul").append("<li class='topic'>" + topics[i] + "</li>");
+        $("#populate").append("<li class='nav-item mt-1 mb-1'><a class='nav-link gif-link'>" + topics[i] + "</a></li>");
     }
 }
 
@@ -48,7 +48,7 @@ function playPause(event) {
 //EVENT HANDLERS
 $(function() {
     initTopics();
-    $(document).on("click", ".topic", fetchGifs);
+    $(document).on("click", ".gif-link", function() { $("li, a").removeClass("active"); $(this).addClass("active"); fetchGifs(); });
     $(document).on("click", "#addTopicButton", addTopic);
     $(document).on("click", ".card-img-top", playPause);
 });
