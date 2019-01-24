@@ -7,7 +7,10 @@
     <title>Giphy App</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
     <script src="assets/javascript/app.js"></script>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
 </head>
 <body>
@@ -24,12 +27,39 @@
             </nav>
             <!-- Page Content -->
             <div class="col ml-3" id="main-content"></div>
-            <!--Testing for favorites column
-            <nav class="nav flex-column ml-auto">
-                Test
-            </nav>
-        -->
         </div>
     </div>
+    <!--Testing for favorites column-->
+    <div class="fixed-bottom text-right">
+    <div class="btn-group dropup m-2">
+        <button class="btn btn-lg btn-primary dropdown-toggle" type="button" id="favorites" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Favorite Gifs <span id="favoritesBadge" class="badge badge-light">1</span>
+        </button>
+        <div class="dropdown-menu" aria-labelledby="favorites" id="favoritesList">
+            <img class="dropdown-item fav-gif" src="https://media0.giphy.com/media/Ov5NiLVXT8JEc/200.gif">
+        </div>
+    </div>
+    </div>
+
+
+    <!--Modal popup for favorites-->
+    <div class="modal fade" tabindex="-1" role="dialog" id="favoritesModal">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title">Modal title</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <p><img class="img-fluid" id="modal-img" src="https://media0.giphy.com/media/Ov5NiLVXT8JEc/giphy.gif"></p>
+                </div>
+                <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div>
+              </div>
+            </div>
+          </div>
 </body>
 </html>
