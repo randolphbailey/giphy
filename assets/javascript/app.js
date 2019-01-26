@@ -45,10 +45,11 @@ function populateGifs (r) {
         $cardCol.append($card);
         $("#main-content").append($cardCol);
     }
+    $("#pinterest").prop("disabled", false);
 }
 
-function pinterest (event) {
-    if (event.target.checked) {
+function pinterest () {
+    if ($("#pinterest").prop("checked")) {
         console.log("true");
         $("#main-content").removeClass("row").addClass("card-columns");
         $(".card").unwrap();
