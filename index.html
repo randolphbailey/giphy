@@ -12,21 +12,28 @@
     <script src="assets/javascript/app.js"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
     <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/dashboard.css">
 </head>
 <body>
     <div class="container-fluid">
         <div class="row">
         <!-- Sidebar -->
-            <nav class="nav flex-column">
-                <ul class="nav-pills no-bullets">
-                    <li class='nav-item nav-link h3'>Giphy Search</li>
-                    <li class='nav-item nav-link'><input class='form-control' type='text' id='newTopic'></li>
-                    <li class='nav-item nav-link'><button class='btn btn-success' id='addTopicButton'>Add Topic</button></li>
-                </ul>
-                <ul class="nav-pills no-bullets" id="populate"></ul>
+            <nav class="col-md-2 d-none d-md-block bg-light sidebar">
+                <div class="sidebar-sticky">
+                    <ul class="nav flex-column">
+                        <li class='nav-item nav-link h3'>Giphy Search</li>
+                        <li class='nav-item nav-link'><input class='form-control' type='text' id='newTopic'></li>
+                        <li class='nav-item nav-link'><button class='btn btn-success' id='addTopicButton'>Add Topic</button></li>
+                    </ul>
+                    <ul class="nav flex-column" id="populate"></ul>
+                </div>
             </nav>
             <!-- Page Content -->
-            <div class="col ml-3" id="main-content"></div>
+            <div class="col-md-9 ml-sm-auto col-lg-10">
+                <div class="row" id="main-content">
+                    <!--Content Populates Here-->
+                </div>
+            </div>
         </div>
     </div>
     <!--Testing for favorites column-->

@@ -4,22 +4,46 @@ var favorites = [];
 //Ajax Construction
 function fetchGifs () {
     let gQuery = "https://api.giphy.com/v1/gifs/search?api_key=lvA12IjUg0sH1TWocJQxC1zmb2VEYq1y&q=" + event.target.innerText + "&limit=10";
-    $.ajax({url: gQuery, method: "GET"}).then(populateGifs);
+    $.ajax({url: gQuery, method: "GET"}).then(testFunction);
 }
 
 //Populate GIFs in the bootstrap grid
 function populateGifs (r) {
-    let j = 0;
     $("#main-content").empty();
     for (let i=0; i<r.data.length; i++) {
-        if (i%3 == 0) {
-            j++;
-            $("#main-content").append("<div class='row' id='row"+j+"'><div class='card-deck' id='deck" + j+ "'></div>");
-        }
         console.log(r.data[i].images.original_still.url);
-        let card = "<div class='card m-2'><img src='" + r.data[i].images.original.url + "' const='" + r.data[i].images.original.url + "' id='" + r.data[i].id + "' class='card-img-top play-pause' alt-src='" + r.data[i].images.original_still.url + "' smallfixed='" + r.data[i].images.fixed_height_small.url + "'><div class='card-body'><h5 class='card-title'>" + r.data[i].title + "</h5><p class='card-text'>Rating: " + r.data[i].rating + "</p></div><div class='card-footer'><a class='btn btn-outline-warning btn-sm add-favorite' parentid='" + r.data[i].id + "'><i class='far fa-star' parentid='" + r.data[i].id + "'></i></a></div></div>";
-        //console.log(card);
-        $("#deck" + j).append(card);
+        let card = "<div class='col-4 not-pinterest'><div class='card m-2'><img src='" + r.data[i].images.original.url + "' const='" + r.data[i].images.original.url + "' id='" + r.data[i].id + "' class='card-img-top play-pause' alt-src='" + r.data[i].images.original_still.url + "' smallfixed='" + r.data[i].images.fixed_height_small.url + "'><div class='card-body'><h5 class='card-title'>" + r.data[i].title + "</h5><p class='card-text'>Rating: " + r.data[i].rating + "</p></div><div class='card-footer'><a class='btn btn-outline-warning btn-sm add-favorite' parentid='" + r.data[i].id + "'><i class='far fa-star' parentid='" + r.data[i].id + "'></i></a></div></div></div>";
+        $("#main-content").append(card);
+    }
+}
+
+function testFunction (r) {
+    $("#main-content").empty();
+    //Build Gif cards and populate using jQuery instead of the better method.
+    for (let i=0; i<r.data.length; i++) {
+        let $cardCol = $("<div class='col-4 not-pinterest'></div>");
+        let $card = $("<div class='card m-2'></div>");
+        let $cardIMG = $("<img>");
+        $cardIMG.attr("src", r.data[i].images.original.url);
+        $cardIMG.attr("const", r.data[i].images.original.url);
+        $cardIMG.attr("id", r.data[i].id);
+        $cardIMG.attr("alt-src", r.data[i].images.original_still.url);
+        $cardIMG.attr("smallfixed", r.data[i].images.fixed_height_small.url);
+        $cardIMG.addClass("card-img-top play-pause");
+        let $cardBody = $("<div class='card-body'></div>");
+        let $cardTitle = $("<h5 class='card-title'>" + r.data[i].title + "</h5>");
+        let $cardText = $("<p class='card-text'>Rating: " + r.data[i].rating + "</p>");
+        let $footer = $("<div class='card-footer'></div>");
+        let $a = $("<a class='btn btn-outline-warning btn-sm add-favorite'></a>");
+        $a.attr("parentid", r.data[i].id);
+        let $i = $("<i class='far fa-star'></i>");
+        $i.attr("parentid", r.data[i].id);
+        $cardBody.append($cardTitle, $cardText);
+        $a.append($i);
+        $footer.append($a);
+        $card.append($cardIMG, $cardBody, $footer);
+        $cardCol.append($card);
+        $("#main-content").append($cardCol);
     }
 }
 
@@ -27,7 +51,7 @@ function populateGifs (r) {
 function initTopics () {
     $("#populate").empty();
     for (let i=0; i<topics.length; i++) {
-        $("#populate").append("<li class='nav-item mt-1 mb-1'><a class='nav-link gif-link'>" + topics[i] + "</a></li>");
+        $("#populate").append("<li class='nav-item'><a class='nav-link gif-link' href='#'>" + topics[i] + "</a></li>");
     }
 }
 
