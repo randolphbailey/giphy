@@ -4,11 +4,11 @@ var favorites = [];
 //Ajax Construction
 function fetchGifs () {
     let gQuery = "https://api.giphy.com/v1/gifs/search?api_key=lvA12IjUg0sH1TWocJQxC1zmb2VEYq1y&q=" + event.target.innerText + "&limit=10";
-    $.ajax({url: gQuery, method: "GET"}).then(testFunction);
+    $.ajax({url: gQuery, method: "GET"}).then(populateGifs);
 }
 
 //Populate GIFs in the bootstrap grid
-function populateGifs (r) {
+function oldPopulate (r) {
     $("#main-content").empty();
     for (let i=0; i<r.data.length; i++) {
         console.log(r.data[i].images.original_still.url);
@@ -17,7 +17,7 @@ function populateGifs (r) {
     }
 }
 
-function testFunction (r) {
+function populateGifs (r) {
     $("#main-content").empty();
     //Build Gif cards and populate using jQuery instead of the better method.
     for (let i=0; i<r.data.length; i++) {
@@ -44,6 +44,19 @@ function testFunction (r) {
         $card.append($cardIMG, $cardBody, $footer);
         $cardCol.append($card);
         $("#main-content").append($cardCol);
+    }
+}
+
+function pinterest (event) {
+    if (event.target.checked) {
+        console.log("true");
+        $("#main-content").removeClass("row").addClass("card-columns");
+        $(".card").unwrap();
+    }
+    else {
+        console.log("false");
+        $("#main-content").removeClass("card-columns").addClass("row");
+        $(".card").wrap("<div class='col-4'></div>");
     }
 }
 
@@ -106,4 +119,5 @@ $(function() {
     $(document).on("click", ".play-pause", playPause);
     $(document).on("click", ".add-favorite", addFavorite);
     $(document).on("click", ".fav-gif", showModal);
+    $(document).on("click", "#pinterest", pinterest);
 });
