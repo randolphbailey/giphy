@@ -48,9 +48,9 @@ function populateGifs (r) {
     $("#pinterest").prop("disabled", false);
 }
 
+//Toggle "pinterest" mode.  Gifs will show up as Masonry-like columns instead of defined rows
 function pinterest () {
     if ($("#pinterest").prop("checked")) {
-        console.log("true");
         $("#main-content").removeClass("row").addClass("card-columns");
         $(".card").unwrap();
     }
