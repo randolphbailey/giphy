@@ -87,11 +87,20 @@ function addFavorite (event) {
     initFavorites();
 }
 
+//Remove Favorite Item
+function removeMe () {
+    let search = $(this).prev().attr("biggif");
+    let index = favorites.map(function(x) {return x.original; }).indexOf(search);
+    favorites.splice(index, 1);
+    $(this).parent().remove();
+    initFavorites();
+}
+
 //Initialize Favorites List
 function initFavorites () {
     $("#favoritesList").empty();
     for (let i=0; i<favorites.length; i++) {
-        $("#favoritesList").append("<img class='dropdown-item fav-gif' src='" + favorites[i].small + "' biggif='" + favorites[i].original + "'>");
+        $("#favoritesList").append("<div class='dropdown-item'><img class='fav-gif' src='" + favorites[i].small + "' biggif='" + favorites[i].original + "'><button class='btn remove-favorite'>X</button></div>");
     }
     $("#favoritesBadge").text(favorites.length);
 }
@@ -121,4 +130,5 @@ $(function() {
     $(document).on("click", ".add-favorite", addFavorite);
     $(document).on("click", ".fav-gif", showModal);
     $(document).on("click", "#pinterest", pinterest);
+    $(document).on("click", ".remove-favorite", removeMe);
 });
