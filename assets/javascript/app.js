@@ -35,12 +35,13 @@ function populateGifs (r) {
         let $cardText = $("<p class='card-text'>Rating: " + r.data[i].rating + "</p>");
         let $footer = $("<div class='card-footer'></div>");
         let $a = $("<a class='btn btn-outline-warning btn-sm add-favorite'></a>");
+        let $download = $("<a class='btn btn-outline-success btn-sm' href='" + r.data[i].images.original.url + "' download><i class='fas fa-cloud-download-alt'></i></a>");
         $a.attr("parentid", r.data[i].id);
         let $i = $("<i class='far fa-star'></i>");
         $i.attr("parentid", r.data[i].id);
         $cardBody.append($cardTitle, $cardText);
         $a.append($i);
-        $footer.append($a);
+        $footer.append($download, $a);
         $card.append($cardIMG, $cardBody, $footer);
         $cardCol.append($card);
         $("#main-content").append($cardCol);
