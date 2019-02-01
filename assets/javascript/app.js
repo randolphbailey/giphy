@@ -25,12 +25,13 @@ function populateGifs (r) {
         let $cardCol = $("<div class='col-4 not-pinterest'></div>");
         let $card = $("<div class='card m-2'></div>");
         let $cardIMG = $("<img>");
-        $cardIMG.attr("src", r.data[i].images.original_still.url);
-        $cardIMG.attr("const", r.data[i].images.original_still.url);
-        $cardIMG.attr("id", r.data[i].id);
-        $cardIMG.attr("alt-src", r.data[i].images.original.url);
-        $cardIMG.attr("smallfixed", r.data[i].images.fixed_height_small.url);
-        $cardIMG.addClass("card-img-top play-pause");
+        $cardIMG.attr("src", r.data[i].images.original_still.url)
+        .attr("const", r.data[i].images.original_still.url)
+        .attr("const-ani", r.data[i].images.original.url)
+        .attr("id", r.data[i].id)
+        .attr("alt-src", r.data[i].images.original.url)
+        .attr("smallfixed", r.data[i].images.fixed_height_small.url)
+        .addClass("card-img-top play-pause");
         let $cardBody = $("<div class='card-body'></div>");
         let $cardTitle = $("<h5 class='card-title'>" + r.data[i].title + "</h5>");
         let $cardText = $("<p class='card-text'>Rating: " + r.data[i].rating + "</p>");
@@ -82,7 +83,7 @@ function addTopic () {
 //Add gif to favorites dropup
 function addFavorite (event) {
     let parentID = $(event.target).attr("parentid");
-    let constURL = $("#" + parentID).attr("const");
+    let constURL = $("#" + parentID).attr("const-ani");
     let smallGif = $("#" + parentID).attr("smallfixed");
     let newFav = {original: constURL, small: smallGif};
     favorites.push(newFav);
