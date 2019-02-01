@@ -6,7 +6,7 @@ function fetchGifs () {
     let gQuery = "https://api.giphy.com/v1/gifs/search?api_key=lvA12IjUg0sH1TWocJQxC1zmb2VEYq1y&q=" + event.target.innerText + "&limit=10";
     $.ajax({url: gQuery, method: "GET"}).then(populateGifs);
 }
-
+/*Obsolete, left in for demonstration purposes
 //Populate GIFs in the bootstrap grid
 function oldPopulate (r) {
     $("#main-content").empty();
@@ -16,6 +16,7 @@ function oldPopulate (r) {
         $("#main-content").append(card);
     }
 }
+*/
 
 function populateGifs (r) {
     $("#main-content").empty();
@@ -24,10 +25,10 @@ function populateGifs (r) {
         let $cardCol = $("<div class='col-4 not-pinterest'></div>");
         let $card = $("<div class='card m-2'></div>");
         let $cardIMG = $("<img>");
-        $cardIMG.attr("src", r.data[i].images.original.url);
-        $cardIMG.attr("const", r.data[i].images.original.url);
+        $cardIMG.attr("src", r.data[i].images.original_still.url);
+        $cardIMG.attr("const", r.data[i].images.original_still.url);
         $cardIMG.attr("id", r.data[i].id);
-        $cardIMG.attr("alt-src", r.data[i].images.original_still.url);
+        $cardIMG.attr("alt-src", r.data[i].images.original.url);
         $cardIMG.attr("smallfixed", r.data[i].images.fixed_height_small.url);
         $cardIMG.addClass("card-img-top play-pause");
         let $cardBody = $("<div class='card-body'></div>");
