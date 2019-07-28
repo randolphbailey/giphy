@@ -1,3 +1,5 @@
+![Giphy](/assets/giphy.png)
+
 # Giphy Front End
 
 This site makes calls to the Giphy API to return gifs based on the user's query.  The querys will populate in the sidebar for future access, and users can save favorite gifs.
