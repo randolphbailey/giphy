@@ -8,6 +8,8 @@ The site starts out as a basic, effectivley blank, bootstrap grid.  When querys 
 
 Additional features include a favorites drawer, which will open a full-size modal of the favorite gif once clicked.  Also featured is a "pinterest mode" which displays the gifs in an unaligned columnar format instead of the default vertically aligned grid.
 
+The Gifs will play/pause upon being clicked.  The default is paused to decrease loading times and processor usage.
+
 ## Technologies Used
 * Bootstrap
 * jQuery
