@@ -18,3 +18,6 @@ The Gifs will play/pause upon being clicked.  The default is paused to decrease 
 * AJAX
 * JSON
 * Giphy API
+
+## Link to deployed site
+https://giphy.randolphbailey.com
